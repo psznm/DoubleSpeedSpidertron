@@ -3,7 +3,7 @@
 data:extend({
   {
     type = "movement-bonus-equipment",
-    name = "exoskeleton-equipment-custom",
+    name = "DoubleSpeedSpidertron_exoskeleton-equipment",
     sprite =
     {
       filename = "__base__/graphics/equipment/exoskeleton-equipment.png",
@@ -36,7 +36,7 @@ data:extend({
   },
   {
     type = "item",
-    name = "exoskeleton-equipment-custom",
+    name = "DoubleSpeedSpidertron_exoskeleton-equipment",
     icon = "__base__/graphics/icons/exoskeleton-equipment.png",
     icon_size = 64, icon_mipmaps = 4,
     placed_as_equipment_result = "exoskeleton-equipment",
@@ -47,7 +47,7 @@ data:extend({
   },
   {
     type = "generator-equipment",
-    name = "fusion-reactor-equipment-custom",
+    name = "DoubleSpeedSpidertron_fusion-reactor-equipment",
     sprite =
     {
       filename = "__base__/graphics/equipment/fusion-reactor-equipment.png",
@@ -79,10 +79,10 @@ data:extend({
   },
   {
     type = "item",
-    name = "fusion-reactor-equipment-custom",
+    name = "DoubleSpeedSpidertron_fusion-reactor-equipment",
     icon = "__base__/graphics/icons/fusion-reactor-equipment.png",
     icon_size = 64, icon_mipmaps = 4,
-    placed_as_equipment_result = "fusion-reactor-equipment-custom",
+    placed_as_equipment_result = "DoubleSpeedSpidertron_fusion-reactor-equipment",
     subgroup = "equipment",
     order = "a[energy-source]-b[fusion-reactor]",
     default_request_amount = 1,
