@@ -13,8 +13,6 @@ local add_exos = function (count, entity)
         local reactors_to_take = -count;
         local discard;
         for i, equipment in ipairs(entity.grid.equipment) do
-            
-             game.print(equipment.name);
             if (equipment and equipment.valid) then
                 if equipment.name == 'exoskeleton-equipment-custom' and exos_to_take > 0 then
                     discard = entity.grid.take({equipment=equipment})
