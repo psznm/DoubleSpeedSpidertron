@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.5
+Date: 9 February 2021
+  Features:
+    - Added changelog
+  Bugfixes:
+    - Fixed spidertrons not updating properly because wrong event handler registration
+---------------------------------------------------------------------------------------------------
 Version: 0.0.4
 Date: 9 February 2021
   Bugfixes:

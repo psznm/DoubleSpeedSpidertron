@@ -8,10 +8,10 @@ local add_exos = function (count, entity)
     if count > 0 then
         for i = 1, count, 1 do
             if entity.grid.put({name='DoubleSpeedSpidertron_exoskeleton-equipment'}) == nil then
-                -- game.print("Could not add DoubleSpeedSpidertron_exoskeleton-equipment");
+                game.print("Spidertron Double Speed: Could not add DoubleSpeedSpidertron_exoskeleton-equipment");
             end
             if entity.grid.put({name='DoubleSpeedSpidertron_fusion-reactor-equipment'}) == nil then
-                -- game.print("Could not add DoubleSpeedSpidertron_fusion-reactor-equipment");
+                game.print("Spidertron Double Speed: Could not add DoubleSpeedSpidertron_fusion-reactor-equipment");
             end 
         end
         
@@ -71,6 +71,7 @@ local reevaluate = function(event)
 end
 
 local on_built_entity = function(event)
+    -- game.print("on_built_entity")
     local entity = event.created_entity;
     if entity.type == 'spider-vehicle' then
         adjust_spidertron(entity)
@@ -86,16 +87,12 @@ lib.events =
     [defines.events.on_built_entity] = on_built_entity,
 }
 
-script.on_init(
-function()
+lib.on_init = function()
     for name, surface in pairs(game.surfaces) do
         for i, spider in ipairs(surface.find_entities_filtered({type='spider-vehicle'})) do
             adjust_spidertron(spider)
         end
     end
 end
-)
-  
-
 
 return lib
