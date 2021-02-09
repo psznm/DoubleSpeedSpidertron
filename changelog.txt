@@ -1,0 +1,15 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.4
+Date: 9 February 2021
+  Bugfixes:
+    - Existing spidertrons get adjusted when loading the mod into existing game.
+---------------------------------------------------------------------------------------------------
+Version: 0.0.3
+Date: 8 February 2021
+  Compatibility:
+    - Added compatibility with some mods changing spidertron.
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 8 February 2021
+  Bugfixes:
+    - Removed missed debug print.

@@ -36,18 +36,9 @@ local add_exos = function (count, entity)
     end
 end
 
-local reevaluate = function(event)
-
-    -- game.print("Reevaluating")
-    local player = game.get_player(event.player_index)
-    if player.opened_gui_type ~= defines.gui_type.entity then return end
-  
-  
-    local opened = player.opened
-    if not (opened and opened.valid) then return end
-
+local adjust_spidertron = function(spidertron)
     local spidertron_base_speed = 1;
-    for key, value in pairs(opened.grid.get_contents()) do
+    for key, value in pairs(spidertron.grid.get_contents()) do
         if game.equipment_prototypes[key].type == "movement-bonus-equipment" then
             if key ~= "DoubleSpeedSpidertron_exoskeleton-equipment" then
                 spidertron_base_speed = spidertron_base_speed + game.equipment_prototypes[key].movement_bonus * value
@@ -57,21 +48,32 @@ local reevaluate = function(event)
     local desired_speed = spidertron_base_speed * desired_percentage;
     local desired_speed_percent = (100 * desired_speed)
     local exoskeletons_needed = desired_speed_percent - (spidertron_base_speed * 100)
-    local exoskeletons_current = opened.grid.get_contents()["DoubleSpeedSpidertron_exoskeleton-equipment"];
+    local exoskeletons_current = spidertron.grid.get_contents()["DoubleSpeedSpidertron_exoskeleton-equipment"];
  
     if exoskeletons_current ~= nil then
         exoskeletons_needed = exoskeletons_needed - exoskeletons_current;
     end
     if exoskeletons_needed ~= 0 then
-        add_exos(exoskeletons_needed, opened);
+        add_exos(exoskeletons_needed, spidertron);
     end
 end
 
-local adjust_spidertron = function(event)
+local reevaluate = function(event)
+    -- game.print("Reevaluating")
+    local player = game.get_player(event.player_index)
+    if player.opened_gui_type ~= defines.gui_type.entity then return end
+  
+  
+    local opened = player.opened
+    if not (opened and opened.valid) then return end
+
+    adjust_spidertron(opened)
+end
+
+local on_built_entity = function(event)
     local entity = event.created_entity;
     if entity.type == 'spider-vehicle' then
-        local iterations = (100 * desired_percentage) - 100
-        add_exos(iterations, entity);
+        adjust_spidertron(entity)
     end
 end
 
@@ -81,8 +83,19 @@ lib.events =
 {
     [defines.events.on_player_placed_equipment] = reevaluate,
     [defines.events.on_player_removed_equipment] = reevaluate,
-    [defines.events.on_built_entity] = adjust_spidertron,
+    [defines.events.on_built_entity] = on_built_entity,
 }
+
+script.on_init(
+function()
+    for name, surface in pairs(game.surfaces) do
+        for i, spider in ipairs(surface.find_entities_filtered({type='spider-vehicle'})) do
+            adjust_spidertron(spider)
+        end
+    end
+end
+)
+  
 
 
 return lib

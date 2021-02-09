@@ -1,11 +1,11 @@
 {
-    "name": "DoubleSpeedSpidertron",
-    "version": "0.0.3",
-    "title": "Double Speed Spidertron",
-    "author": "psznm",
-    "contact": "psznm@seznam.cz",
-    "homepage": "https://github.com/psznm/DoubleSpeedSpidertron",
-    "factorio_version": "1.1",
-    "dependencies": ["base >= 1.1"],
-    "description": "Makes any spidertron twice as fast"
+  "name": "DoubleSpeedSpidertron",
+  "version": "0.0.4",
+  "title": "Double Speed Spidertron",
+  "author": "psznm",
+  "contact": "psznm@seznam.cz",
+  "homepage": "https://github.com/psznm/DoubleSpeedSpidertron",
+  "factorio_version": "1.1",
+  "dependencies": ["base >= 1.1"],
+  "description": "Makes any spidertron twice as fast"
 }
