@@ -65,6 +65,7 @@ local reevaluate = function(event)
   
   
     local opened = player.opened
+    if not (opened and opened.object_name == "LuaEntity" and opened.type == "spider-vehicle") then return end
     if not (opened and opened.valid) then return end
 
     adjust_spidertron(opened)
