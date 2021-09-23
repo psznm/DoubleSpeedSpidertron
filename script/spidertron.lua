@@ -5,18 +5,6 @@ local desired_percentage = 1 / (desired_fps/60)
 local exoName = 'DoubleSpeedSpidertron_exoskeleton-equipment'
 local reactorName = 'DoubleSpeedSpidertron_fusion-reactor-equipment'
 
-local info = function(entity)
-    if entity.name then
-        game.print(serpent.block('name='..entity.name))
-    end
-    if entity.type then
-        game.print(serpent.block('type='..entity.type))
-    end
-    if entity.object_name then
-        game.print(serpent.block('object_name='..entity.object_name))
-    end
-end
-
 local add_exos = function (count, entity)
     -- game.print("Adding exos")
     -- game.print(count)
