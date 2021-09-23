@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.6
+Date: 23 September 2021
+  Bugfixes:
+    - Fixed getting internal items into player inventory when ctrl clicking empty space in spidertron grid
+    - Fixed error caused with non-spidertron entities containing grid
+---------------------------------------------------------------------------------------------------
 Version: 0.0.5
 Date: 9 February 2021
   Features:

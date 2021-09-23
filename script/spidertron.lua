@@ -2,15 +2,30 @@
 local desired_fps=30
 local desired_percentage = 1 / (desired_fps/60)
 
+local exoName = 'DoubleSpeedSpidertron_exoskeleton-equipment'
+local reactorName = 'DoubleSpeedSpidertron_fusion-reactor-equipment'
+
+local info = function(entity)
+    if entity.name then
+        game.print(serpent.block('name='..entity.name))
+    end
+    if entity.type then
+        game.print(serpent.block('type='..entity.type))
+    end
+    if entity.object_name then
+        game.print(serpent.block('object_name='..entity.object_name))
+    end
+end
+
 local add_exos = function (count, entity)
     -- game.print("Adding exos")
     -- game.print(count)
     if count > 0 then
         for i = 1, count, 1 do
-            if entity.grid.put({name='DoubleSpeedSpidertron_exoskeleton-equipment'}) == nil then
+            if entity.grid.put({name=exoName}) == nil then
                 game.print("Spidertron Double Speed: Could not add DoubleSpeedSpidertron_exoskeleton-equipment");
             end
-            if entity.grid.put({name='DoubleSpeedSpidertron_fusion-reactor-equipment'}) == nil then
+            if entity.grid.put({name=reactorName}) == nil then
                 game.print("Spidertron Double Speed: Could not add DoubleSpeedSpidertron_fusion-reactor-equipment");
             end 
         end
@@ -22,11 +37,11 @@ local add_exos = function (count, entity)
         local discard;
         for i, equipment in ipairs(entity.grid.equipment) do
             if (equipment and equipment.valid) then
-                if equipment.name == 'DoubleSpeedSpidertron_exoskeleton-equipment' and exos_to_take > 0 then
+                if equipment.name == exoName and exos_to_take > 0 then
                     discard = entity.grid.take({equipment=equipment})
                     exos_to_take = exos_to_take - 1;
                 else
-                    if equipment.name == 'DoubleSpeedSpidertron_fusion-reactor-equipment' and reactors_to_take > 0 then
+                    if equipment.name == reactorName and reactors_to_take > 0 then
                         discard = entity.grid.take({equipment=equipment})
                         reactors_to_take = reactors_to_take - 1;
                     end
@@ -58,6 +73,20 @@ local adjust_spidertron = function(spidertron)
     end
 end
 
+local remove_internal_items_from_player_inventory = function(player)
+    for _, inv in pairs({defines.inventory.character_main}) do
+        local inventory = player.get_inventory(inv)
+        if inventory then
+            local itemsRemoved = 1;
+            while itemsRemoved ~= 0 do
+                itemsRemoved = 0
+                itemsRemoved = itemsRemoved + inventory.remove(exoName);
+                itemsRemoved = itemsRemoved + inventory.remove(reactorName);
+            end
+        end
+    end
+end
+
 local reevaluate = function(event)
     -- game.print("Reevaluating")
     local player = game.get_player(event.player_index)
@@ -65,9 +94,10 @@ local reevaluate = function(event)
   
   
     local opened = player.opened
-    if not (opened and opened.valid) then return end
+    if not (opened and opened.valid and opened.object_name == "LuaEntity" and opened.type == "spider-vehicle") then return end
 
     adjust_spidertron(opened)
+    remove_internal_items_from_player_inventory(player)
 end
 
 local on_built_entity = function(event)
