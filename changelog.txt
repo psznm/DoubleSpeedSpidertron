@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.7
+Date: 16 June 2022
+  Compatibility:
+    - Added compatibility with all mods adding/changing spidertron equipment categories.
+---------------------------------------------------------------------------------------------------
 Version: 0.0.6
 Date: 23 September 2021
   Bugfixes:
