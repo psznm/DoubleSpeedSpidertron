@@ -28,7 +28,7 @@ data:extend({
     energy_source =
     {
       type = "void",
-      usage_priority = "secondary-input"
+      usage_priority = "primary-input"
     },
     energy_consumption = "0.1W",
     movement_bonus = 0.01,

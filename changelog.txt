@@ -1,6 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.9
+Date: 3 July 2022
+  Bugfixes:
+    - Fixed bug where spidertron would slow down, if its grid would run out of power
+---------------------------------------------------------------------------------------------------
 Version: 0.0.8
-Date: 19 June 2021
+Date: 19 June 2022
   Bugfixes:
     - Fixed loading crash with spidertron engineer
 ---------------------------------------------------------------------------------------------------
