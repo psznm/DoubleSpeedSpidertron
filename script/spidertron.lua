@@ -1,5 +1,5 @@
 
-local desired_fps=30
+local desired_fps=settings.startup["DSS-target-framerate"].value
 local desired_percentage = 1 / (desired_fps/60)
 
 local exoName = 'DoubleSpeedSpidertron_exoskeleton-equipment'
@@ -15,7 +15,7 @@ local add_exos = function (count, entity)
             end
             if entity.grid.put({name=reactorName}) == nil then
                 game.print("Spidertron Double Speed: Could not add DoubleSpeedSpidertron_fusion-reactor-equipment");
-            end 
+            end
         end
         
     -- game.print(serpent.block(entity.grid.get_contents()))
