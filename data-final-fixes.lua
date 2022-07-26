@@ -3,6 +3,9 @@ local eq1 = data.raw["movement-bonus-equipment"]["DoubleSpeedSpidertron_exoskele
 local eq2 = data.raw["generator-equipment"]["DoubleSpeedSpidertron_fusion-reactor-equipment"]
 
 for index, spider in pairs(data.raw["spider-vehicle"]) do
+    if (spider.equipment_grid == nil) then
+        spider.equipment_grid = "DSS_spidertron-equipment-grid"
+    end
     local gridName = spider.equipment_grid
 
     local grid = data.raw["equipment-grid"][gridName]

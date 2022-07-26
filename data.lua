@@ -2,6 +2,15 @@
 
 data:extend({
   {
+    type = "equipment-grid",
+    name = "DSS_spidertron-equipment-grid",
+    width = 0,
+    height = 0,
+    equipment_categories = {"armor"},
+    locked = true
+  },
+
+  {
     type = "movement-bonus-equipment",
     name = "DoubleSpeedSpidertron_exoskeleton-equipment",
     sprite =
